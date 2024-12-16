@@ -42,20 +42,20 @@ def gen_button_clicked():
     st.session_state[gen_button] = True
 
 
-st.title("Document To Podcast")
+st.title("README to Podcast 🎙️")
 
-st.header("Uploading Data")
+st.header("Upload README 📄")
 
 uploaded_file = st.file_uploader(
-    "Choose a file", type=["pdf", "html", "txt", "docx", "md"]
+    "Choose a README file", type=["md", "txt"]
 )
 
 
 if uploaded_file is not None:
     st.divider()
-    st.header("Loading and Cleaning Data")
+    st.header("Processing README 🔄")
     st.markdown(
-        "[Docs for this Step](https://mozilla-ai.github.io/document-to-podcast/step-by-step-guide/#step-1-document-pre-processing)"
+        "We'll convert this README into an engaging podcast conversation that explains the project. ✨"
     )
     st.divider()
 
@@ -80,20 +80,11 @@ if uploaded_file is not None:
         )
 
     st.divider()
-    st.header("Downloading and Loading models")
+    st.header("Loading AI Models 🤖")
     st.markdown(
-        "[Docs for this Step](https://mozilla-ai.github.io/document-to-podcast/step-by-step-guide/#step-2-podcast-script-generation)"
-    )
-    st.divider()
-
-    st.markdown(
-        "For this demo, we are using the following models: \n"
-        "- [OLMoE-1B-7B-0924-Instruct](https://huggingface.co/allenai/OLMoE-1B-7B-0924-Instruct-GGUF)\n"
-        "- [OuteAI/OuteTTS-0.2-500M-GGUF/OuteTTS-0.2-500M-FP16.gguf](https://huggingface.co/OuteAI/OuteTTS-0.2-500M-GGUF)"
-    )
-    st.markdown(
-        "You can check the [Customization Guide](https://mozilla-ai.github.io/document-to-podcast/customization/)"
-        " for more information on how to use different models."
+        "Using AI models to:\n"
+        "1. 💭 Convert the README into a natural conversation\n"
+        "2. 🗣️ Generate realistic voices for the speakers"
     )
 
     text_model = load_text_to_text_model()
@@ -109,18 +100,20 @@ if uploaded_file is not None:
         clean_text = clean_text[:max_characters]
 
     st.divider()
-    st.header("Podcast generation")
+    st.header("Podcast Configuration ⚙️")
     st.markdown(
-        "[Docs for this Step](https://mozilla-ai.github.io/document-to-podcast/step-by-step-guide/#step-3-audio-podcast-generation)"
+        "Configure the speakers who will explain this project. By default, we have:\n"
+        "- 👩‍💻 A technical expert who explains the project clearly\n"
+        "- 🙋‍♂️ A curious developer who asks helpful questions"
     )
     st.divider()
 
-    st.subheader("Speaker configuration")
+    st.subheader("Speaker configuration 🎭")
     for s in DEFAULT_SPEAKERS:
         s.pop("id", None)
     speakers = st.data_editor(DEFAULT_SPEAKERS, num_rows="dynamic")
 
-    if st.button("Generate Podcast", on_click=gen_button_clicked):
+    if st.button("Generate README Explanation 🎬", on_click=gen_button_clicked):
         for n, speaker in enumerate(speakers):
             speaker["id"] = n + 1
         speakers_str = "\n".join(
@@ -159,18 +152,18 @@ if uploaded_file is not None:
                     text = ""
 
     if st.session_state[gen_button]:
-        if st.button("Save Podcast to audio file"):
+        if st.button("Save Podcast to audio file 💾"):
             st.session_state.audio = np.concatenate(st.session_state.audio)
             sf.write(
                 "podcast.wav",
                 st.session_state.audio,
                 samplerate=speech_model.audio_codec.sr,
             )
-            st.markdown("Podcast saved to disk!")
+            st.markdown("Your README explanation has been saved as an audio file! 🎉")
 
-        if st.button("Save Podcast script to text file"):
+        if st.button("Save conversation script to text file 📝"):
             with open("script.txt", "w") as f:
                 st.session_state.script += "}"
                 f.write(st.session_state.script)
 
-            st.markdown("Script saved to disk!")
+            st.markdown("Conversation script has been saved to disk! ✨")

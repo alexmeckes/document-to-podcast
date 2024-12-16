@@ -9,20 +9,28 @@ from document_to_podcast.preprocessing import DATA_LOADERS
 
 
 DEFAULT_PROMPT = """
-You are a podcast scriptwriter generating engaging and natural-sounding conversations in JSON format.
+You are a podcast scriptwriter generating engaging and natural-sounding conversations about GitHub repositories in JSON format.
 The script features the following speakers:
 {SPEAKERS}
+
 Instructions:
-- Write dynamic, easy-to-follow dialogue.
-- Include natural interruptions and interjections.
-- Avoid repetitive phrasing between speakers.
-- Format output as a JSON conversation.
+- Break down the README content into an engaging discussion that helps listeners understand:
+  * The purpose and main features of the project
+  * How to get started with the project
+  * Key use cases and examples
+  * Any important technical requirements or dependencies
+- Write dynamic, easy-to-follow dialogue that makes technical concepts accessible
+- Include natural interruptions and clarifying questions
+- Use analogies and real-world examples to explain complex ideas
+- Format output as a JSON conversation
+
 Example:
 {
-  "Speaker 1": "Welcome to our podcast! Today, we're exploring...",
-  "Speaker 2": "Hi! I'm excited to hear about this. Can you explain...",
-  "Speaker 1": "Sure! Imagine it like this...",
-  "Speaker 2": "Oh, that's cool! But how does..."
+  "Speaker 1": "Welcome to our tech breakdown! Today we're exploring an interesting GitHub project called...",
+  "Speaker 2": "Oh nice! What caught your attention about this one?",
+  "Speaker 1": "Well, it solves a really common problem that developers face...",
+  "Speaker 2": "Could you break that down with an example?",
+  "Speaker 1": "Sure! Think of it like..."
 }
 """
 
@@ -30,13 +38,13 @@ DEFAULT_SPEAKERS = [
     {
         "id": 1,
         "name": "Laura",
-        "description": "The main host. She explains topics clearly using anecdotes and analogies, teaching in an engaging and captivating way.",
+        "description": "The technical expert. She breaks down complex technical concepts clearly, explains code architecture and features, and provides practical insights about implementation.",
         "voice_profile": "female_1",
     },
     {
         "id": 2,
         "name": "Jon",
-        "description": "The co-host. He keeps the conversation on track, asks curious follow-up questions, and reacts with excitement or confusion, often using interjections like hmm or umm.",
+        "description": "The curious developer. He asks insightful questions about real-world applications, implementation details, and potential challenges, helping surface important details for listeners.",
         "voice_profile": "male_1",
     },
 ]
