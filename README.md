@@ -5,7 +5,7 @@
 
 <p align="center"><img src="./images/Blueprints-logo.png" width="35%" alt="Project logo"/></p>
 
-# README-to-Podcast: Transform GitHub READMEs into Engaging Audio Explanations 🎙️
+# README-to-Podcast: GitHub Docs as Audio 🎙️
 
 > 🔀 This is a customized fork of [mozilla-ai/document-to-podcast](https://github.com/mozilla-ai/document-to-podcast), specifically adapted to focus on explaining GitHub README files through conversational audio. While the original project handles various document types, this version is optimized for making technical documentation more accessible through audio explanations.
 
@@ -13,7 +13,6 @@ This blueprint demonstrates how to use open-source AI models to convert GitHub R
 - 🎧 Learning about new projects while multitasking
 - 📚 Making technical documentation more accessible
 - 🤝 Helping newcomers understand your project
-- 🌐 Breaking down complex GitHub projects into digestible discussions
 
 ### 👉 📖 For more detailed guidance on using this project, please visit our [Docs here](https://mozilla-ai.github.io/document-to-podcast/).
 
