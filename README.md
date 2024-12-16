@@ -5,10 +5,15 @@
 
 <p align="center"><img src="./images/Blueprints-logo.png" width="35%" alt="Project logo"/></p>
 
-# Document-to-podcast: a Blueprint by Mozilla.ai for generating podcasts from documents using local AI
+# README-to-Podcast: Transform GitHub READMEs into Engaging Audio Explanations 🎙️
 
-This blueprint demonstrate how you can use open-source models & tools to convert input documents into a podcast featuring two speakers.
-It is designed to work on most local setups or with [GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=888426876&skip_quickstart=true&machine=standardLinux32gb), meaning no external API calls or GPU access is required. This makes it more accessible and privacy-friendly by keeping everything local.
+> 🔀 This is a customized fork of [mozilla-ai/document-to-podcast](https://github.com/mozilla-ai/document-to-podcast), specifically adapted to focus on explaining GitHub README files through conversational audio. While the original project handles various document types, this version is optimized for making technical documentation more accessible through audio explanations.
+
+This blueprint demonstrates how to use open-source AI models to convert GitHub README files into engaging podcast-style conversations between a technical expert and a curious developer. Perfect for:
+- 🎧 Learning about new projects while multitasking
+- 📚 Making technical documentation more accessible
+- 🤝 Helping newcomers understand your project
+- 🌐 Breaking down complex GitHub projects into digestible discussions
 
 ### 👉 📖 For more detailed guidance on using this project, please visit our [Docs here](https://mozilla-ai.github.io/document-to-podcast/).
 
@@ -62,35 +67,33 @@ Once the Codespaces environment launches, inside the terminal, start the Streaml
 
 <img src="./images/document-to-podcast-diagram.png" width="1200" />
 
+1. **README Upload** 📄
+   - Upload any GitHub README file (supports .md or .txt)
 
-1. **Document Upload**
-   Start by uploading a document in a supported format (e.g., PDF, .txt, or .docx).
 
 2. **Document Pre-Processing**
    The uploaded document is processed to extract and clean the text. This involves:
    - Extracting readable text from the document.
    - Removing noise such as URLs, email addresses, and special characters to ensure the text is clean and structured.
 
-3. **Script Generation**
-   The cleaned text is passed to a language model to generate a podcast transcript in the form of a conversation between two speakers.
-   - **Model Loading**: The system selects and loads a pre-trained LLM optimized for running locally, using the llama_cpp library. This enables the model to run efficiently on CPUs, making them more accessible and suitable for local setups.
-   - **Customizable Prompt**: A user-defined "system prompt" guides the LLM in shaping the conversation, specifying tone, content, speaker interaction, and format.
-   - **Output Transcript**: The model generates a podcast script in structured format, with each speaker's dialogue clearly labeled.
-     Example output:
-     ```json
-     {
-         "Speaker 1": "Welcome to the podcast on AI advancements.",
-         "Speaker 2": "Thank you! So what's new this week for the latest AI trends?",
-         "Speaker 1": "Where should I start.. Lots has been happening!",
-         ...
-     }
-     ```
-   This step ensures that the podcast script is engaging, relevant, and ready for audio conversion.
+3. **Conversation Generation** 💭
+   - Uses AI to transform technical content into natural dialogue
+   - Features two speakers:
+     - 👩‍💻 Technical Expert: Explains concepts clearly and provides implementation details
+     - 🙋‍♂️ Curious Developer: Asks insightful questions and surfaces important details
+   Example output:
+   ```json
+   {
+       "Technical Expert": "Let me explain what makes this project special...",
+       "Curious Developer": "That's interesting! How would someone get started with it?",
+       "Technical Expert": "Great question! First, you'll need to...",
+   }
+   ```
 
-4. **Audio Generation**
-  - The generated transcript is converted into audio using a Text-to-Speech (TTS) model.
-  -	Each speaker is assigned a distinct voice.
-	- The final output is saved as an audio file in formats like MP3 or WAV.
+4. **Audio Creation** 🎧
+   - Converts the conversation into natural-sounding audio
+   - Each speaker gets a distinct voice
+   - Creates an engaging, podcast-style explanation
 
 ## Models
 
